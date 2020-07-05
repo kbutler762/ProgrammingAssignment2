@@ -2,8 +2,9 @@
 ## functions do
 
 ## Write a short comment describing this function
+require(matlib)
 
-b <- matrix(1:9, nrow=3, ncol = 3)
+myMatrix <- makeCacheMatrix(1:9)
 
 makeCacheMatrix <- function(x = matrix()) {
         i <- NULL
@@ -22,14 +23,14 @@ makeCacheMatrix <- function(x = matrix()) {
 ## Write a short comment describing this function
 
 cacheSolve <- function(x, ...) {
-        i <- x[getinverse]()
+        i <- x$getinverse()
         if(!is.null(i)){
                 message("getting cahced inverse matrix data")
                 return(i)
         }
-        data <- x[get]()
-        i <- inverse(data,...)
-        x[setinverse](i)
+        data <- x$get()
+        i <-  inv(data,...)
+        x$setinverse(i)
         i
         
         ## Return a matrix that is the inverse of 'x'
