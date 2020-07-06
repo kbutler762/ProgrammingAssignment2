@@ -2,9 +2,9 @@
 ## functions do
 
 ## Write a short comment describing this function
-require(matlib)
+#require(matlib)
 
-myMatrix <- makeCacheMatrix(1:9)
+myMatrix <- makeCacheMatrix(matrix(c(2, -4, 150, 80, 94, 2.3, 7, 21, 283), nrow = 3, byrow = TRUE))
 
 makeCacheMatrix <- function(x = matrix()) {
         i <- NULL
@@ -15,7 +15,9 @@ makeCacheMatrix <- function(x = matrix()) {
         get <- function() x
         setinverse <- function(inverse) i <<-inverse
         getinverse <- function() i
-        list(set=set, get=get, setinverse = setinverse, getinverse=getinverse)
+        list(set=set, get=get, 
+             setinverse = setinverse, 
+             getinverse=getinverse)
 
 }
 
@@ -29,7 +31,7 @@ cacheSolve <- function(x, ...) {
                 return(i)
         }
         data <- x$get()
-        i <-  inv(data,...)
+        i <-  solve(data,...)
         x$setinverse(i)
         i
         
