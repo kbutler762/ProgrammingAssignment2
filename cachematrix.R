@@ -1,10 +1,17 @@
-## Put comments here that give an overall description of what your
-## functions do
+## myMatrix is a variable that stores the 3x3 square matrix of values listed
+## makeCacheMatrix initializes the variables that will be used to calculate the
+## inverse of myMatrix.
+##cacheSolve takes the inputs from the parent environment and finds the inverse of myMatrix
 
-## Write a short comment describing this function
-#require(matlib)
+
+
+## myMatrix is a variables that stores the matrix input that will be used later 
+
 
 myMatrix <- makeCacheMatrix(matrix(c(2, -4, 150, 80, 94, 2.3, 7, 21, 283), nrow = 3, byrow = TRUE))
+
+##makeCacheMatrix is the variable that stores a function that initializes object x and i. 
+##makeCacheMatrix also defines the functions set, get, setinverse, and getinverse
 
 makeCacheMatrix <- function(x = matrix()) {
         i <- NULL
@@ -22,18 +29,20 @@ makeCacheMatrix <- function(x = matrix()) {
 }
 
 
-## Write a short comment describing this function
+## cacheSolve is the variable assigned to the function that populates the matrix and
+## executes the inverse function for the matrix
 
 cacheSolve <- function(x, ...) {
+        
         i <- x$getinverse()
         if(!is.null(i)){
-                message("getting cahced inverse matrix data")
+                message("getting cached inverse matrix data")
                 return(i)
         }
         data <- x$get()
         i <-  solve(data,...)
         x$setinverse(i)
-        i
+        return(i)
         
-        ## Return a matrix that is the inverse of 'x'
+        ## i is a matrix that is the inverse of 'x' aka myMatrix
 }
